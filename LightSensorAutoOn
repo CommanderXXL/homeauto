@@ -1,0 +1,348 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="OKu%L~7KN7ax#tojJGq1">LightTurnedOn</variable>
+  </variables>
+  <block type="create" id="E=j0e,f=Ape=!g.vc=u-" x="113" y="-237">
+    <field name="NAME">AutoRolloOpenLounge</field>
+    <value name="VALUE">
+      <block type="logic_boolean" id="d)+qD7FUBmmGt)R3iFc(">
+        <field name="BOOL">FALSE</field>
+      </block>
+    </value>
+    <value name="COMMON">
+      <block type="text" id="9Ze8):yEP5l}Z6WH2/(c">
+        <field name="TEXT">{"role":"variable","type":"boolean"}</field>
+      </block>
+    </value>
+    <next>
+      <block type="create" id="r16y1Q1_hJ0VqX3!q34P">
+        <field name="NAME">AutoRolloOpenTerrasse</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="ddmob(#ZZ(.qP_fE{?HM">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <value name="COMMON">
+          <block type="text" id="nxG1Oi0--kVfpAH)7C@f">
+            <field name="TEXT">{"role":"variable","type":"boolean"}</field>
+          </block>
+        </value>
+        <next>
+          <block type="comment" id="G+,c*q/3NRd+YdgS(1In">
+            <field name="COMMENT">Lounge Rollo Automatik</field>
+            <next>
+              <block type="on" id="?unA.Ar6O+}1V[=IxzXq">
+                <field name="OID">deconz.0.sensors.00158d000309f352.open</field>
+                <field name="CONDITION">ne</field>
+                <field name="ACK_CONDITION"></field>
+                <statement name="STATEMENT">
+                  <block type="controls_if" id="~A6qK*t7b70Z`#Cc`Zeb">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="get_value" id="Ckp84AtxsS{JE68.Ruem">
+                        <field name="ATTR">val</field>
+                        <field name="OID">deconz.0.sensors.00158d000309f352.open</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="controls_if" id="YQM2LHimbKF*ZgVU`2-M">
+                        <value name="IF0">
+                          <block type="logic_compare" id="k..CEt-h-C[+3dSOz*Ru">
+                            <field name="OP">GTE</field>
+                            <value name="A">
+                              <block type="get_value" id="nfk!yj)l)VJV~rUjohH^">
+                                <field name="ATTR">val</field>
+                                <field name="OID">mqtt.0.vantage.erdgeschoss.esszimmer.blind.rollolinks.percent</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="n15Z;xjYIrTGA%#X0O?4">
+                                <field name="NUM">80</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="control" id="g=]::r]MS1owZDVyr3EB">
+                            <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                            <field name="OID">javascript.0.AutoRolloOpenLounge</field>
+                            <field name="WITH_DELAY">FALSE</field>
+                            <value name="VALUE">
+                              <block type="logic_boolean" id="D5fo!z-;2Rd[9oKm`Sk4">
+                                <field name="BOOL">TRUE</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="control" id="tHTq8fCC*#?/y_#r?0G~">
+                                <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                <field name="OID">mqtt.0.vantage.erdgeschoss.esszimmer.blind.rollolinks.percent</field>
+                                <field name="WITH_DELAY">FALSE</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="!bG~AH5~*Gxdqazi-p0.">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="controls_if" id="+]PyQQ@dW{:v6fLo:pY;">
+                        <value name="IF0">
+                          <block type="get_value" id="?;qpJ~MTL!@!~v0ecv4h">
+                            <field name="ATTR">val</field>
+                            <field name="OID">javascript.0.AutoRolloOpenLounge</field>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="control" id="pTGq_c)e*S~I3}6Q9wv-">
+                            <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                            <field name="OID">javascript.0.AutoRolloOpenLounge</field>
+                            <field name="WITH_DELAY">FALSE</field>
+                            <value name="VALUE">
+                              <block type="logic_boolean" id="c}00,eKcoFj{EqD0*LbV">
+                                <field name="BOOL">FALSE</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="control" id="H?6Hx;geVl_wvVR%i-qi">
+                                <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                <field name="OID">mqtt.0.vantage.erdgeschoss.esszimmer.blind.rollolinks.percent</field>
+                                <field name="WITH_DELAY">FALSE</field>
+                                <value name="VALUE">
+                                  <block type="math_number" id="xkTm5R#*xo.zdjIx^+?j">
+                                    <field name="NUM">100</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <next>
+                  <block type="comment" id="7Pt/D49Jg{@-f=q+BH+y">
+                    <field name="COMMENT">Terrassen Rollo Automatik</field>
+                    <next>
+                      <block type="on" id="d(BZx[vzcQoziapw/rSP">
+                        <field name="OID">deconz.0.sensors.00158d000309c366.open</field>
+                        <field name="CONDITION">ne</field>
+                        <field name="ACK_CONDITION"></field>
+                        <statement name="STATEMENT">
+                          <block type="controls_if" id="O,V+l5#vfXmq^Xe([;Y+">
+                            <mutation else="1"></mutation>
+                            <value name="IF0">
+                              <block type="get_value" id="lH5GK_??Z]wg!g:D:E6^">
+                                <field name="ATTR">val</field>
+                                <field name="OID">deconz.0.sensors.00158d000309c366.open</field>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="controls_if" id="Ue6H2F~T~*(#`dc($Gs%">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="n$L#jnJZmI_4?En55%yy">
+                                    <field name="OP">GTE</field>
+                                    <value name="A">
+                                      <block type="get_value" id="_hkd.G$7p*,XNP}sCs;c">
+                                        <field name="ATTR">val</field>
+                                        <field name="OID">mqtt.0.vantage.erdgeschoss.wohnzimmer.blind.rollodreierrechts.percent</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="ib]ht%g8SMUvCzhVSEZ-">
+                                        <field name="NUM">80</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="control" id="+q*jolBMdnJFPg36)jYh">
+                                    <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                    <field name="OID">javascript.0.AutoRolloOpenTerrasse</field>
+                                    <field name="WITH_DELAY">FALSE</field>
+                                    <value name="VALUE">
+                                      <block type="logic_boolean" id="Z0]!:+56PMZL!J-u,2?O">
+                                        <field name="BOOL">TRUE</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="control" id="bww:z9$PARQ1=!iL^:q[">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                        <field name="OID">mqtt.0.vantage.erdgeschoss.wohnzimmer.blind.rollodreierrechts.percent</field>
+                                        <field name="WITH_DELAY">FALSE</field>
+                                        <value name="VALUE">
+                                          <block type="math_number" id="Vo{aBmiSX|v,Rqf:Ix,2">
+                                            <field name="NUM">0</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="controls_if" id="*SHdODHVG^_7Q%{?F0Eg">
+                                            <value name="IF0">
+                                              <block type="logic_compare" id="!,TPy6krozofwqKCGpCW">
+                                                <field name="OP">LTE</field>
+                                                <value name="A">
+                                                  <block type="get_value" id="^M[*2+T|BG.WbSP#N~AL">
+                                                    <field name="ATTR">val</field>
+                                                    <field name="OID">hmip.0.devices.3014F711A0000D5BE9940937.channels.1.averageIllumination</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="math_number" id="Jnpfx2H`6+U=w4lR~[+g">
+                                                    <field name="NUM">20</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="DO0">
+                                              <block type="variables_set" id="a,{,P3dr3d$t|]NGK%;]">
+                                                <field name="VAR" id="OKu%L~7KN7ax#tojJGq1">LightTurnedOn</field>
+                                                <value name="VALUE">
+                                                  <block type="logic_boolean" id="il(z:7_~$1UxLkcc`},c">
+                                                    <field name="BOOL">TRUE</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="control" id="MB,6Sb-q6c5}$h4?]t=2">
+                                                    <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                                    <field name="OID">mqtt.0.vantage.erdgeschoss.terrasse.switch.licht</field>
+                                                    <field name="WITH_DELAY">FALSE</field>
+                                                    <value name="VALUE">
+                                                      <block type="math_number" id="Zr.^/mKYb5WJR,YT4CN_">
+                                                        <field name="NUM">100</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="control" id="ecer6(~myt%@mh#:$Ej=">
+                                                        <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                                        <field name="OID">alexa2.0.Echo-Devices.G000WV058481052R.Commands.announcement</field>
+                                                        <field name="WITH_DELAY">FALSE</field>
+                                                        <value name="VALUE">
+                                                          <block type="text_join" id="Id%N]^H8DH[AhF`$!|K(">
+                                                            <mutation items="3"></mutation>
+                                                            <value name="ADD0">
+                                                              <block type="text" id="]TeUpuMgb-)7K`TBB7?%">
+                                                                <field name="TEXT">Da die Aussenhelligkeit nur </field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="ADD1">
+                                                              <block type="get_value" id="rg8)+Ve)wl+2BCm2gOvx">
+                                                                <field name="ATTR">val</field>
+                                                                <field name="OID">hmip.0.devices.3014F711A0000D5BE9940937.channels.1.averageIllumination</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="ADD2">
+                                                              <block type="text" id="6;n:x#^uOiSVz}Wr2m[!">
+                                                                <field name="TEXT"> Lux beträgt, wird das Licht eingeschaltet.</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </statement>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </statement>
+                            <statement name="ELSE">
+                              <block type="controls_if" id="g@YgDX8p(WZtvy;syF7(">
+                                <value name="IF0">
+                                  <block type="get_value" id="joU.]=.NY/ZtXk)Ywv]V">
+                                    <field name="ATTR">val</field>
+                                    <field name="OID">javascript.0.AutoRolloOpenTerrasse</field>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="control" id="`~DWF/u_IVf/ssCwh|`r">
+                                    <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                    <field name="OID">javascript.0.AutoRolloOpenTerrasse</field>
+                                    <field name="WITH_DELAY">FALSE</field>
+                                    <value name="VALUE">
+                                      <block type="logic_boolean" id="3NwH3vK!-]a_t=YGAm,$">
+                                        <field name="BOOL">FALSE</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="control" id="Cx@v1wX*47xAps[PIwnf">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                        <field name="OID">mqtt.0.vantage.erdgeschoss.wohnzimmer.blind.rollodreierrechts.percent</field>
+                                        <field name="WITH_DELAY">FALSE</field>
+                                        <value name="VALUE">
+                                          <block type="math_number" id="Gj6x+N/bIS3fH|i[yE{t">
+                                            <field name="NUM">100</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="controls_if" id="Tq+Njmn29Ie!rqd.(uKx">
+                                            <value name="IF0">
+                                              <block type="variables_get" id="1Gz.c:Zqr~=tBB=e*!fZ">
+                                                <field name="VAR" id="OKu%L~7KN7ax#tojJGq1">LightTurnedOn</field>
+                                              </block>
+                                            </value>
+                                            <statement name="DO0">
+                                              <block type="variables_set" id="1dYcsV=q#vX,nCQhN$1w">
+                                                <field name="VAR" id="OKu%L~7KN7ax#tojJGq1">LightTurnedOn</field>
+                                                <value name="VALUE">
+                                                  <block type="logic_boolean" id="^#t(BNlA~e({J@YH`eFi">
+                                                    <field name="BOOL">FALSE</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="control" id="B6XpMupq@[:83WmIc-X#">
+                                                    <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                                    <field name="OID">mqtt.0.vantage.erdgeschoss.terrasse.switch.licht</field>
+                                                    <field name="WITH_DELAY">FALSE</field>
+                                                    <value name="VALUE">
+                                                      <block type="math_number" id="WGV{YSMw0zG^,3;bK?p/">
+                                                        <field name="NUM">0</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="control" id="d0WvOzUfi(gF*P?#.WDR">
+                                                        <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                                        <field name="OID">alexa2.0.Echo-Devices.G000WV058481052R.Commands.announcement</field>
+                                                        <field name="WITH_DELAY">FALSE</field>
+                                                        <value name="VALUE">
+                                                          <block type="text" id="i~d)Cq^pmX(H8Rh?Ze,3">
+                                                            <field name="TEXT">Da vorher das Licht eingeschaltet wurde, wird es jetzt wieder ausgeschaltet. </field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </statement>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </statement>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
