@@ -9,11 +9,11 @@
     <variable id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</variable>
     <variable id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</variable>
   </variables>
-  <block type="procedures_defcustomreturn" id="uXJ($ntYbjw|1kk0vM%g" x="12" y="-612">
+  <block type="procedures_defcustomreturn" id=",aLnI^.cYwKl`kA#IZow" x="13" y="-637">
     <mutation statements="false">
       <arg name="id" varid=")U;?aWi4A3.6!w=bM;%}"></arg>
     </mutation>
-    <field name="NAME">objectFromID</field>
+    <field name="NAME">getObjectFromID</field>
     <field name="SCRIPT">cmV0dXJuIGdldE9iamVjdChpZCk7</field>
     <comment pinned="false" h="80" w="160">Beschreibe diese Funktion …</comment>
   </block>
@@ -192,22 +192,22 @@
                                           </block>
                                         </value>
                                         <next>
-                                          <block type="variables_set" id=",hI!|;eEI1jAVkr`@MiL">
+                                          <block type="variables_set" id="ZNzZ^[JPpqF~]_vEcb,?">
                                             <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
                                             <value name="VALUE">
-                                              <block type="get_attr" id="w%,Eo9;%IPe{Sy%FLNU{">
+                                              <block type="get_attr" id="a%^XwaQ8f{{VZna4QWwv">
                                                 <value name="PATH">
-                                                  <shadow type="text" id="Oh}SBC19ug1aS~IKtzE#">
+                                                  <shadow type="text" id=")R%)Rf.v$Df;**h`/m]-">
                                                     <field name="TEXT">common.name</field>
                                                   </shadow>
                                                 </value>
                                                 <value name="OBJECT">
-                                                  <block type="procedures_callcustomreturn" id="B={B3D,I/QR$k1rilfz1">
-                                                    <mutation name="objectFromID">
+                                                  <block type="procedures_callcustomreturn" id="aPOYnGM|dh)@ZsPjkwwS">
+                                                    <mutation name="getObjectFromID">
                                                       <arg name="id"></arg>
                                                     </mutation>
                                                     <value name="ARG0">
-                                                      <block type="variables_get" id="R)|FPA8G/aDuQ.PjlXdP">
+                                                      <block type="variables_get" id=":XiorCI^+?F-0L+W,q{Y">
                                                         <field name="VAR" id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</field>
                                                       </block>
                                                     </value>
@@ -216,188 +216,201 @@
                                               </block>
                                             </value>
                                             <next>
-                                              <block type="controls_if" id="b[-TPF8]1X[P#3zxnY_l">
-                                                <value name="IF0">
-                                                  <block type="logic_compare" id="|ZspZk^[n?U,i+%gE3*u" inline="false">
-                                                    <field name="OP">EQ</field>
-                                                    <value name="A">
-                                                      <block type="lists_indexOf" id="5B,ghw?KY!+]t`d[vkN,">
-                                                        <field name="END">FIRST</field>
-                                                        <value name="VALUE">
-                                                          <block type="variables_get" id="mX[3T{W[](g@}!Ksf!d?">
-                                                            <field name="VAR" id="wS)_RSS_(otoWv}YL]$O">BatteryLevels</field>
-                                                          </block>
-                                                        </value>
-                                                        <value name="FIND">
-                                                          <block type="variables_get" id="%/a8`%JF:f/i}Cl}NxT_">
-                                                            <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
-                                                          </block>
-                                                        </value>
-                                                      </block>
-                                                    </value>
-                                                    <value name="B">
-                                                      <block type="math_number" id="M[HRP=;l(A*.{ze%N/*O">
-                                                        <field name="NUM">0</field>
-                                                      </block>
-                                                    </value>
+                                              <block type="debug" id="-5CaxI0*zBFh8^8?^;Ke">
+                                                <field name="Severity">log</field>
+                                                <value name="TEXT">
+                                                  <shadow type="text" id="G9TxZ%?XbV+=#_@:)5^V">
+                                                    <field name="TEXT">test</field>
+                                                  </shadow>
+                                                  <block type="variables_get" id=",BiMRaoUTwI7o]:B[B}G">
+                                                    <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
                                                   </block>
                                                 </value>
-                                                <statement name="DO0">
-                                                  <block type="lists_setIndex" id="L+`!/xT%bf-)G2}7s|09">
-                                                    <mutation at="false"></mutation>
-                                                    <field name="MODE">INSERT</field>
-                                                    <field name="WHERE">LAST</field>
-                                                    <value name="LIST">
-                                                      <block type="variables_get" id="z/1oBtN3.QtGeE$l1s52">
-                                                        <field name="VAR" id="wS)_RSS_(otoWv}YL]$O">BatteryLevels</field>
+                                                <next>
+                                                  <block type="controls_if" id="b[-TPF8]1X[P#3zxnY_l">
+                                                    <value name="IF0">
+                                                      <block type="logic_compare" id="|ZspZk^[n?U,i+%gE3*u" inline="false">
+                                                        <field name="OP">EQ</field>
+                                                        <value name="A">
+                                                          <block type="lists_indexOf" id="5B,ghw?KY!+]t`d[vkN,">
+                                                            <field name="END">FIRST</field>
+                                                            <value name="VALUE">
+                                                              <block type="variables_get" id="mX[3T{W[](g@}!Ksf!d?">
+                                                                <field name="VAR" id="wS)_RSS_(otoWv}YL]$O">BatteryLevels</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="FIND">
+                                                              <block type="variables_get" id="%/a8`%JF:f/i}Cl}NxT_">
+                                                                <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="math_number" id="M[HRP=;l(A*.{ze%N/*O">
+                                                            <field name="NUM">0</field>
+                                                          </block>
+                                                        </value>
                                                       </block>
                                                     </value>
-                                                    <value name="TO">
-                                                      <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="?|5%cUpzwX+o=oO#uC9:">
-                                                        <field name="TEXT"></field>
-                                                      </shadow>
-                                                      <block type="variables_get" id="q2P%GE#5zISP?$oy2Lx0">
-                                                        <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
-                                                      </block>
-                                                    </value>
-                                                    <next>
-                                                      <block type="lists_setIndex" id="!{!6o;.@jRV%m:mSMhBP">
+                                                    <statement name="DO0">
+                                                      <block type="lists_setIndex" id="L+`!/xT%bf-)G2}7s|09">
                                                         <mutation at="false"></mutation>
                                                         <field name="MODE">INSERT</field>
                                                         <field name="WHERE">LAST</field>
                                                         <value name="LIST">
-                                                          <block type="variables_get" id="rnMR$fP:c?g^YjIKaUmD">
+                                                          <block type="variables_get" id="z/1oBtN3.QtGeE$l1s52">
                                                             <field name="VAR" id="wS)_RSS_(otoWv}YL]$O">BatteryLevels</field>
                                                           </block>
                                                         </value>
                                                         <value name="TO">
-                                                          <block type="get_value_var" id="4|ui*{LE!_B?}8?(cp!u">
-                                                            <field name="ATTR">val</field>
-                                                            <value name="OID">
-                                                              <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="_aA`xL#xra1o{FTn1Js/">
-                                                                <field name="TEXT"></field>
-                                                              </shadow>
-                                                              <block type="variables_get" id="y]NGTn9~_eTYs+~%.+qH">
-                                                                <field name="VAR" id="K@$,Ut9K%]Z2^YAYyuJG">deviceID</field>
-                                                              </block>
-                                                            </value>
+                                                          <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="?|5%cUpzwX+o=oO#uC9:">
+                                                            <field name="TEXT"></field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="q2P%GE#5zISP?$oy2Lx0">
+                                                            <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
                                                           </block>
                                                         </value>
                                                         <next>
-                                                          <block type="controls_if" id="Ntt_qL[KvqxopiC|Kt7y">
-                                                            <value name="IF0">
-                                                              <block type="logic_compare" id="hbgV#kB;]7|b,dG_SX)z">
-                                                                <field name="OP">LT</field>
-                                                                <value name="A">
-                                                                  <block type="get_value_var" id="?}/_1^e$jQ+H1qP@J0zR">
-                                                                    <field name="ATTR">val</field>
-                                                                    <value name="OID">
-                                                                      <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="_aA`xL#xra1o{FTn1Js/">
-                                                                        <field name="TEXT"></field>
-                                                                      </shadow>
-                                                                      <block type="variables_get" id="G[;f1RGJM_WALp-n:d-a">
-                                                                        <field name="VAR" id="K@$,Ut9K%]Z2^YAYyuJG">deviceID</field>
-                                                                      </block>
-                                                                    </value>
-                                                                  </block>
-                                                                </value>
-                                                                <value name="B">
-                                                                  <block type="math_number" id="A!]G,uDG`a#DPMg?9:a7">
-                                                                    <field name="NUM">40</field>
+                                                          <block type="lists_setIndex" id="!{!6o;.@jRV%m:mSMhBP">
+                                                            <mutation at="false"></mutation>
+                                                            <field name="MODE">INSERT</field>
+                                                            <field name="WHERE">LAST</field>
+                                                            <value name="LIST">
+                                                              <block type="variables_get" id="rnMR$fP:c?g^YjIKaUmD">
+                                                                <field name="VAR" id="wS)_RSS_(otoWv}YL]$O">BatteryLevels</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="TO">
+                                                              <block type="get_value_var" id="4|ui*{LE!_B?}8?(cp!u">
+                                                                <field name="ATTR">val</field>
+                                                                <value name="OID">
+                                                                  <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="_aA`xL#xra1o{FTn1Js/">
+                                                                    <field name="TEXT"></field>
+                                                                  </shadow>
+                                                                  <block type="variables_get" id="y]NGTn9~_eTYs+~%.+qH">
+                                                                    <field name="VAR" id="K@$,Ut9K%]Z2^YAYyuJG">deviceID</field>
                                                                   </block>
                                                                 </value>
                                                               </block>
                                                             </value>
-                                                            <statement name="DO0">
-                                                              <block type="controls_if" id=",kG9Lso?GdC;[WFK/r#M">
+                                                            <next>
+                                                              <block type="controls_if" id="Ntt_qL[KvqxopiC|Kt7y">
                                                                 <value name="IF0">
-                                                                  <block type="logic_compare" id="SITVoEj#PbEl[7y@z*hp">
-                                                                    <field name="OP">EQ</field>
+                                                                  <block type="logic_compare" id="hbgV#kB;]7|b,dG_SX)z">
+                                                                    <field name="OP">LT</field>
                                                                     <value name="A">
-                                                                      <block type="variables_get" id="Z+g{:kmT9;H.5ipE/68M">
-                                                                        <field name="VAR" id="L.tdCyP^2O$=u^a)d}ir">LowBatCount</field>
+                                                                      <block type="get_value_var" id="?}/_1^e$jQ+H1qP@J0zR">
+                                                                        <field name="ATTR">val</field>
+                                                                        <value name="OID">
+                                                                          <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="_aA`xL#xra1o{FTn1Js/">
+                                                                            <field name="TEXT"></field>
+                                                                          </shadow>
+                                                                          <block type="variables_get" id="G[;f1RGJM_WALp-n:d-a">
+                                                                            <field name="VAR" id="K@$,Ut9K%]Z2^YAYyuJG">deviceID</field>
+                                                                          </block>
+                                                                        </value>
                                                                       </block>
                                                                     </value>
                                                                     <value name="B">
-                                                                      <block type="math_number" id="{,hyAc2o}uSU.FR![RwQ">
-                                                                        <field name="NUM">0</field>
+                                                                      <block type="math_number" id="A!]G,uDG`a#DPMg?9:a7">
+                                                                        <field name="NUM">40</field>
                                                                       </block>
                                                                     </value>
                                                                   </block>
                                                                 </value>
                                                                 <statement name="DO0">
-                                                                  <block type="variables_set" id="+h@3NsI`vSDn/71XUU?/">
-                                                                    <field name="VAR" id=";rQ4?ZDeVp+@ppl;Z(=H">LowBatText</field>
-                                                                    <value name="VALUE">
-                                                                      <block type="text" id="A^T/$.;V~C*7mhH;aNa_">
-                                                                        <field name="TEXT">Geräte mit niedrigem Batteriestand: </field>
+                                                                  <block type="controls_if" id=",kG9Lso?GdC;[WFK/r#M">
+                                                                    <value name="IF0">
+                                                                      <block type="logic_compare" id="SITVoEj#PbEl[7y@z*hp">
+                                                                        <field name="OP">EQ</field>
+                                                                        <value name="A">
+                                                                          <block type="variables_get" id="Z+g{:kmT9;H.5ipE/68M">
+                                                                            <field name="VAR" id="L.tdCyP^2O$=u^a)d}ir">LowBatCount</field>
+                                                                          </block>
+                                                                        </value>
+                                                                        <value name="B">
+                                                                          <block type="math_number" id="{,hyAc2o}uSU.FR![RwQ">
+                                                                            <field name="NUM">0</field>
+                                                                          </block>
+                                                                        </value>
                                                                       </block>
                                                                     </value>
-                                                                  </block>
-                                                                </statement>
-                                                                <next>
-                                                                  <block type="math_change" id="nG%]7Rk3.l=/N1`aO08D">
-                                                                    <field name="VAR" id="L.tdCyP^2O$=u^a)d}ir">LowBatCount</field>
-                                                                    <value name="DELTA">
-                                                                      <shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number" id="b5(WyDx*TZl.^!0fSR!d">
-                                                                        <field name="NUM">1</field>
-                                                                      </shadow>
-                                                                      <block type="math_number" id="ZFoP}|]M@cCeM{%lR)/!">
-                                                                        <field name="NUM">1</field>
-                                                                      </block>
-                                                                    </value>
-                                                                    <next>
-                                                                      <block type="text_append" id="p|tlrjU3,r79)+1(O+oV">
+                                                                    <statement name="DO0">
+                                                                      <block type="variables_set" id="+h@3NsI`vSDn/71XUU?/">
                                                                         <field name="VAR" id=";rQ4?ZDeVp+@ppl;Z(=H">LowBatText</field>
-                                                                        <value name="TEXT">
-                                                                          <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="+n,Zb*1jh$pc1gi^3tKF">
-                                                                            <field name="TEXT"></field>
+                                                                        <value name="VALUE">
+                                                                          <block type="text" id="A^T/$.;V~C*7mhH;aNa_">
+                                                                            <field name="TEXT">Geräte mit niedrigem Batteriestand: </field>
+                                                                          </block>
+                                                                        </value>
+                                                                      </block>
+                                                                    </statement>
+                                                                    <next>
+                                                                      <block type="math_change" id="nG%]7Rk3.l=/N1`aO08D">
+                                                                        <field name="VAR" id="L.tdCyP^2O$=u^a)d}ir">LowBatCount</field>
+                                                                        <value name="DELTA">
+                                                                          <shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number" id="b5(WyDx*TZl.^!0fSR!d">
+                                                                            <field name="NUM">1</field>
                                                                           </shadow>
-                                                                          <block type="variables_get" id="J#emuUR^4*For.x60O}q">
-                                                                            <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
+                                                                          <block type="math_number" id="ZFoP}|]M@cCeM{%lR)/!">
+                                                                            <field name="NUM">1</field>
                                                                           </block>
                                                                         </value>
                                                                         <next>
-                                                                          <block type="text_append" id="oS.iZ9e(Af-LJxsC{VhU">
+                                                                          <block type="text_append" id="p|tlrjU3,r79)+1(O+oV">
                                                                             <field name="VAR" id=";rQ4?ZDeVp+@ppl;Z(=H">LowBatText</field>
                                                                             <value name="TEXT">
                                                                               <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="+n,Zb*1jh$pc1gi^3tKF">
                                                                                 <field name="TEXT"></field>
                                                                               </shadow>
-                                                                              <block type="text" id="W/rmz==ExppX+oM!fHQD">
-                                                                                <field name="TEXT"> hat nur noch </field>
+                                                                              <block type="variables_get" id="J#emuUR^4*For.x60O}q">
+                                                                                <field name="VAR" id="GH)9^H(1VM[:TMk6:c/?">CurrentDeviceName</field>
                                                                               </block>
                                                                             </value>
                                                                             <next>
-                                                                              <block type="text_append" id="r+*.wf=N_9k-[/g6Sql3">
+                                                                              <block type="text_append" id="oS.iZ9e(Af-LJxsC{VhU">
                                                                                 <field name="VAR" id=";rQ4?ZDeVp+@ppl;Z(=H">LowBatText</field>
                                                                                 <value name="TEXT">
                                                                                   <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="+n,Zb*1jh$pc1gi^3tKF">
                                                                                     <field name="TEXT"></field>
                                                                                   </shadow>
-                                                                                  <block type="get_value_var" id="hudwhC{{eQDwY]|G)?XO">
-                                                                                    <field name="ATTR">val</field>
-                                                                                    <value name="OID">
-                                                                                      <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="_aA`xL#xra1o{FTn1Js/">
-                                                                                        <field name="TEXT"></field>
-                                                                                      </shadow>
-                                                                                      <block type="variables_get" id="m@Wta}dpekPald)03R.9">
-                                                                                        <field name="VAR" id="K@$,Ut9K%]Z2^YAYyuJG">deviceID</field>
-                                                                                      </block>
-                                                                                    </value>
+                                                                                  <block type="text" id="W/rmz==ExppX+oM!fHQD">
+                                                                                    <field name="TEXT"> hat nur noch </field>
                                                                                   </block>
                                                                                 </value>
                                                                                 <next>
-                                                                                  <block type="text_append" id="@KdtR[7GhWU_m1B[D7/)">
+                                                                                  <block type="text_append" id="r+*.wf=N_9k-[/g6Sql3">
                                                                                     <field name="VAR" id=";rQ4?ZDeVp+@ppl;Z(=H">LowBatText</field>
                                                                                     <value name="TEXT">
                                                                                       <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="+n,Zb*1jh$pc1gi^3tKF">
                                                                                         <field name="TEXT"></field>
                                                                                       </shadow>
-                                                                                      <block type="text" id="$R~2c[~LnaCmJmFd}@Vw">
-                                                                                        <field name="TEXT"> Prozent Batterie, </field>
+                                                                                      <block type="get_value_var" id="hudwhC{{eQDwY]|G)?XO">
+                                                                                        <field name="ATTR">val</field>
+                                                                                        <value name="OID">
+                                                                                          <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="_aA`xL#xra1o{FTn1Js/">
+                                                                                            <field name="TEXT"></field>
+                                                                                          </shadow>
+                                                                                          <block type="variables_get" id="m@Wta}dpekPald)03R.9">
+                                                                                            <field name="VAR" id="K@$,Ut9K%]Z2^YAYyuJG">deviceID</field>
+                                                                                          </block>
+                                                                                        </value>
                                                                                       </block>
                                                                                     </value>
+                                                                                    <next>
+                                                                                      <block type="text_append" id="@KdtR[7GhWU_m1B[D7/)">
+                                                                                        <field name="VAR" id=";rQ4?ZDeVp+@ppl;Z(=H">LowBatText</field>
+                                                                                        <value name="TEXT">
+                                                                                          <shadow xmlns="http://www.w3.org/1999/xhtml" type="text" id="+n,Zb*1jh$pc1gi^3tKF">
+                                                                                            <field name="TEXT"></field>
+                                                                                          </shadow>
+                                                                                          <block type="text" id="$R~2c[~LnaCmJmFd}@Vw">
+                                                                                            <field name="TEXT"> Prozent Batterie, </field>
+                                                                                          </block>
+                                                                                        </value>
+                                                                                      </block>
+                                                                                    </next>
                                                                                   </block>
                                                                                 </next>
                                                                               </block>
@@ -407,15 +420,15 @@
                                                                       </block>
                                                                     </next>
                                                                   </block>
-                                                                </next>
+                                                                </statement>
                                                               </block>
-                                                            </statement>
+                                                            </next>
                                                           </block>
                                                         </next>
                                                       </block>
-                                                    </next>
+                                                    </statement>
                                                   </block>
-                                                </statement>
+                                                </next>
                                               </block>
                                             </next>
                                           </block>
