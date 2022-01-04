@@ -1,0 +1,93 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable type="timeout" id="timeout">timeout</variable>
+  </variables>
+  <block type="on" id="`8YJZw3yHyJLdCNixX/h" x="138" y="138">
+    <field name="OID">deconz.0.sensors.00158d00041ce69e.open</field>
+    <field name="CONDITION">ne</field>
+    <field name="ACK_CONDITION"></field>
+    <statement name="STATEMENT">
+      <block type="controls_if" id="1[SN{Qc8Qbb2Gq]f$5n-">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="get_value" id="J2lfe(HEW1Uh*t[9{ZZ1">
+            <field name="ATTR">val</field>
+            <field name="OID">deconz.0.sensors.00158d00041ce69e.open</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="mAe$-UywHAmc$~gM!bl%">
+            <value name="IF0">
+              <block type="logic_compare" id="jbhU+dJgiIQwHTLdlzfE">
+                <field name="OP">LTE</field>
+                <value name="A">
+                  <block type="get_value" id="o`r2_aZf,}]}@bYO%g+z">
+                    <field name="ATTR">val</field>
+                    <field name="OID">hmip.0.devices.3014F711A00010DA499477E5.channels.1.actualTemperature</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="!a?(V3w`Z7RFS~}Tj|.2">
+                    <field name="NUM">8</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="timeouts_settimeout" id="1DFU@Q;KvgY~`VISWqZs">
+                <field name="NAME">timeout</field>
+                <field name="DELAY">10</field>
+                <field name="UNIT">min</field>
+                <statement name="STATEMENT">
+                  <block type="control" id="VjfS(m$=QXmyUg%,8f`b">
+                    <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                    <field name="OID">alexa2.0.Echo-Devices.d871adb04e9f4208a13efe7984c8fe28.Commands.announcement</field>
+                    <field name="WITH_DELAY">FALSE</field>
+                    <value name="VALUE">
+                      <block type="text_join" id="i@W^P:Z!n=,LlDArAp*t">
+                        <mutation items="3"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="~H7M.7MYNZ1]3i~$F`#`">
+                            <field name="TEXT">Das Fenster im Bad ist bereits seit mehr als 10 Minuten geöffnet und die Temperatur aussen beträgt nur </field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="get_value" id="PvJ-8G,s;ICGyDSh{U`#">
+                            <field name="ATTR">val</field>
+                            <field name="OID">hmip.0.devices.3014F711A00010DA499477E5.channels.1.actualTemperature</field>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="%Ii_0aDRs;b:pQzA`%S=">
+                            <field name="TEXT"> Grad. Jemand sollte das Fenster schliessen.</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="timeouts_cleartimeout" id="~j*_7WVpP7MF^eVvv0V;">
+            <field name="NAME">timeout</field>
+            <next>
+              <block type="control" id="^nZun~_{s4VyzQIBaQob">
+                <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                <field name="OID">alexa2.0.Echo-Devices.d871adb04e9f4208a13efe7984c8fe28.Commands.announcement</field>
+                <field name="WITH_DELAY">FALSE</field>
+                <value name="VALUE">
+                  <block type="text" id="I)B?:}MoGRuiw)S%wU~W">
+                    <field name="TEXT">Das Fenster im Bad ist jetzt wieder geschlossen</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
