@@ -1,0 +1,355 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="6*c@+Lh#c4iq[KH%u2y1">PossibleRooms</variable>
+    <variable id="RJ]t:[?Hl@FEC_gZvN=U">ZuRaum</variable>
+    <variable id="dUAjP-/N6o*@.yvyV$yv">i</variable>
+    <variable id="+cKk!b7XCG-D-/`X{8:*">VonRaum</variable>
+    <variable id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</variable>
+    <variable id="J{T:([|/bjkH@XLQxnt)">VonCommandObject</variable>
+  </variables>
+  <block type="variables_set" id="g5)^GP3oHmm7en9ZHSI_" x="113" y="-37">
+    <field name="VAR" id="6*c@+Lh#c4iq[KH%u2y1">PossibleRooms</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="FWb`)#sHPg2[?HE5mr^2">
+        <mutation items="3"></mutation>
+        <value name="ADD0">
+          <block type="text" id="/1DeEP5z[M(MFH9pi_HW">
+            <field name="TEXT">Bad</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="text" id="Q[%WSlR4]9jTEdgUfZTR">
+            <field name="TEXT">Schlafzimmer</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="text" id=",JbH!UT4lydR7)*P39#7">
+            <field name="TEXT">Wohnzimmer</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="comment" id="1u6_?ftsP7GL%f_`u%R1">
+        <field name="COMMENT">Auslöser für alle Bewegungsmelder</field>
+        <next>
+          <block type="on_ext" id=":MJI=!*{uqi(B`JrA~Un">
+            <mutation xmlns="http://www.w3.org/1999/xhtml" items="1"></mutation>
+            <field name="CONDITION">ne</field>
+            <field name="ACK_CONDITION"></field>
+            <value name="OID0">
+              <shadow type="field_oid" id="[/e?%p9Z0/:34f,%kiyJ">
+                <field name="oid">deconz.0.sensors.0017880106f66c55.presence</field>
+              </shadow>
+            </value>
+            <statement name="STATEMENT">
+              <block type="comment" id="AJ80:2nP.bv=#=r[vkyj">
+                <field name="COMMENT">Hier muss noch die echte Zuordnung der Bewegungsmelder auf die Alexa Kanäle der Zielräume erfolgen</field>
+                <next>
+                  <block type="variables_set" id="vi(hB7Qgfdq2JtBK,@qP">
+                    <field name="VAR" id="RJ]t:[?Hl@FEC_gZvN=U">ZuRaum</field>
+                    <value name="VALUE">
+                      <block type="on_source" id="?}6JVC2GPr8?`*aWGsnH">
+                        <field name="ATTR">id</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="comment" id="J8hC%P576p$-}l*/X}9u">
+                        <field name="COMMENT">Liste mit allen atuellen spielenden Alexas bauen</field>
+                        <next>
+                          <block type="comment" id=";*pI+cpNQnn]hKYJ5s/;">
+                            <field name="COMMENT">Es kann nur die erste Spielende verschoben werden</field>
+                            <next>
+                              <block type="controls_forEach" id="~TdSK#Prx{I]uzwGhy/!">
+                                <field name="VAR" id="dUAjP-/N6o*@.yvyV$yv">i</field>
+                                <value name="LIST">
+                                  <block type="selector" id="m_QId).3qsa_!p;-l7ZZ">
+                                    <field name="TEXT">channel[state.id=alexa2.0.Echo-Devices.*.Player.currentState]</field>
+                                  </block>
+                                </value>
+                                <statement name="DO">
+                                  <block type="comment" id="A:O7g!;TLX:F/3|ekXBM">
+                                    <field name="COMMENT">Wenn diese Alexa gerade spielt</field>
+                                    <next>
+                                      <block type="controls_if" id="#)5NEU(vxDqn+KW[49t:">
+                                        <value name="IF0">
+                                          <block type="get_value_var" id="n$gqsetz2Lz^;(ec+Z@/">
+                                            <field name="ATTR">val</field>
+                                            <value name="OID">
+                                              <shadow type="text" id="UK4b7I8bnu}c`Y[$J7]|">
+                                                <field name="TEXT"></field>
+                                              </shadow>
+                                              <block type="variables_get" id="iV5Hr0vctL~8R#2_9n@X">
+                                                <field name="VAR" id="dUAjP-/N6o*@.yvyV$yv">i</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="comment" id="pKN|WEaU]@_#qisa_2*:">
+                                            <field name="COMMENT">Das Master Object suchen um einen Befehl an diese Alexa zu geben</field>
+                                            <next>
+                                              <block type="variables_set" id="O!YJ=$=2j[@hn5SWVD~f">
+                                                <field name="VAR" id="+cKk!b7XCG-D-/`X{8:*">VonRaum</field>
+                                                <value name="VALUE">
+                                                  <block type="variables_get" id="Y[dyE-Ivx6$+|ODk5*$E">
+                                                    <field name="VAR" id="dUAjP-/N6o*@.yvyV$yv">i</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="variables_set" id="JZ{:_fRCzZ!R]RCGQ.i_">
+                                                    <field name="VAR" id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</field>
+                                                    <value name="VALUE">
+                                                      <block type="text_getSubstring" id="94yl61_J=zBN{uv{tiv~">
+                                                        <mutation at1="true" at2="true"></mutation>
+                                                        <field name="WHERE1">FROM_START</field>
+                                                        <field name="WHERE2">FROM_START</field>
+                                                        <value name="STRING">
+                                                          <block type="variables_get" id="]?ervqD7peW%CV7EM8!2">
+                                                            <field name="VAR" id="+cKk!b7XCG-D-/`X{8:*">VonRaum</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="AT1">
+                                                          <block type="math_number" id="B,T=vE!W+{U@[]y7bXL9">
+                                                            <field name="NUM">1</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="AT2">
+                                                          <block type="math_arithmetic" id="IwW:au2oI1eI/l~*SAnT">
+                                                            <field name="OP">MINUS</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="text_indexOf" id="/YV}(vsL}nGqu09)HCmY">
+                                                                <field name="END">LAST</field>
+                                                                <value name="VALUE">
+                                                                  <block type="variables_get" id="8T.{Yh0;(Ev05;z%0+{G">
+                                                                    <field name="VAR" id="+cKk!b7XCG-D-/`X{8:*">VonRaum</field>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="FIND">
+                                                                  <shadow type="text" id="/MXl]czC)1/q;a%~9Pbv">
+                                                                    <field name="TEXT">.</field>
+                                                                  </shadow>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <shadow type="math_number" id="{+]t+npb5xY4IY?_nw*F">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="variables_set" id="mTzYwM*|^t[}leZv`j]!">
+                                                        <field name="VAR" id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</field>
+                                                        <value name="VALUE">
+                                                          <block type="text_getSubstring" id="hG@(!e[25TcQ%@%8g~dI">
+                                                            <mutation at1="true" at2="true"></mutation>
+                                                            <field name="WHERE1">FROM_START</field>
+                                                            <field name="WHERE2">FROM_START</field>
+                                                            <value name="STRING">
+                                                              <block type="variables_get" id="l*z0%AF/ZRVe4yPRoW=)">
+                                                                <field name="VAR" id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="AT1">
+                                                              <block type="math_number" id="E.[)B^v/Zjv+cMkH@RDF">
+                                                                <field name="NUM">1</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="AT2">
+                                                              <block type="math_arithmetic" id="XqZ=:]Vrl_k%PWwPJq11">
+                                                                <field name="OP">MINUS</field>
+                                                                <value name="A">
+                                                                  <shadow type="math_number">
+                                                                    <field name="NUM">1</field>
+                                                                  </shadow>
+                                                                  <block type="text_indexOf" id="Dlxi?5cr`t]?:69},u0/">
+                                                                    <field name="END">LAST</field>
+                                                                    <value name="VALUE">
+                                                                      <block type="variables_get" id="=Li8mCj{[?~TD-^U@/(C">
+                                                                        <field name="VAR" id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="FIND">
+                                                                      <shadow type="text" id="|Kh/nDa#DG{;24H0##C6">
+                                                                        <field name="TEXT">.</field>
+                                                                      </shadow>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <value name="B">
+                                                                  <shadow type="math_number" id="SnXj*rB(HjJ6q)Px#7ow">
+                                                                    <field name="NUM">1</field>
+                                                                  </shadow>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="variables_set" id="etQG*Hy!pEiXdx:4fZVL">
+                                                            <field name="VAR" id="+cKk!b7XCG-D-/`X{8:*">VonRaum</field>
+                                                            <value name="VALUE">
+                                                              <block type="get_value_var" id="q9N2){UJtJM7K/bfpGLd">
+                                                                <field name="ATTR">val</field>
+                                                                <value name="OID">
+                                                                  <shadow type="text" id="X}{cqV4v`.qW!hBCmeH8">
+                                                                    <field name="TEXT"></field>
+                                                                  </shadow>
+                                                                  <block type="text_join" id="8J`9_:@;v{eO?nAzd8kx">
+                                                                    <mutation items="2"></mutation>
+                                                                    <value name="ADD0">
+                                                                      <block type="variables_get" id="8E*XZZ8?rfk%7#t89SDy">
+                                                                        <field name="VAR" id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="ADD1">
+                                                                      <block type="text" id="zMDBKrQ1|QTb?(2LmIyt">
+                                                                        <field name="TEXT">.Info.name</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="debug" id="|ubg45u_bLzHX{zw[CiV">
+                                                                <field name="Severity">log</field>
+                                                                <value name="TEXT">
+                                                                  <shadow type="text" id="XLINWy7w#XvFayR8knm/">
+                                                                    <field name="TEXT">test</field>
+                                                                  </shadow>
+                                                                  <block type="text_join" id="h$41y#/w!X6t+(Uvllwk">
+                                                                    <mutation items="4"></mutation>
+                                                                    <value name="ADD0">
+                                                                      <block type="text" id="Fts~R9yX*Co8((9KJQq]">
+                                                                        <field name="TEXT">Schiebe Musik von </field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="ADD1">
+                                                                      <block type="variables_get" id="G,3^okcM68=`U2t|k2BW">
+                                                                        <field name="VAR" id="+cKk!b7XCG-D-/`X{8:*">VonRaum</field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="ADD2">
+                                                                      <block type="text" id="Q#;UU@7)MnK9J,YS4Th=">
+                                                                        <field name="TEXT"> nach </field>
+                                                                      </block>
+                                                                    </value>
+                                                                    <value name="ADD3">
+                                                                      <block type="variables_get" id="]Nj!Xx{^#S`K=apV[Qjl">
+                                                                        <field name="VAR" id="RJ]t:[?Hl@FEC_gZvN=U">ZuRaum</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="comment" id="KsDRFt_:BImC;MS{pW~n">
+                                                                    <field name="COMMENT">Das Objekt an das wir den Befehl schicken</field>
+                                                                    <next>
+                                                                      <block type="variables_set" id="(wD6{PO;45dRt){X@x0f">
+                                                                        <field name="VAR" id="J{T:([|/bjkH@XLQxnt)">VonCommandObject</field>
+                                                                        <value name="VALUE">
+                                                                          <block type="text_join" id="dB_aFy8^S0,Z.w4za@=F">
+                                                                            <mutation items="2"></mutation>
+                                                                            <value name="ADD0">
+                                                                              <block type="variables_get" id="?4##J(l,o_QMPnx2[%7C">
+                                                                                <field name="VAR" id="v3CTU:^{zoyS|O7M2Tg0">DeviceParentID</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="ADD1">
+                                                                              <block type="text" id="^rRH7tJfIb#uPT-uk#l/">
+                                                                                <field name="TEXT">.Commands.textCommand</field>
+                                                                              </block>
+                                                                            </value>
+                                                                          </block>
+                                                                        </value>
+                                                                        <next>
+                                                                          <block type="control_ex" id="7~yyOABS2wrUPHLF4H[6">
+                                                                            <field name="TYPE">false</field>
+                                                                            <field name="CLEAR_RUNNING">FALSE</field>
+                                                                            <value name="OID">
+                                                                              <shadow type="field_oid" id="sut(^Jp-~.}qx(Rft,Tq">
+                                                                                <field name="oid">Object ID</field>
+                                                                              </shadow>
+                                                                              <block type="variables_get" id="k.EzSpn3f{Rf./@*~S[n">
+                                                                                <field name="VAR" id="J{T:([|/bjkH@XLQxnt)">VonCommandObject</field>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="VALUE">
+                                                                              <shadow type="logic_boolean" id="UC`jb47J){umcqTt.],|">
+                                                                                <field name="BOOL">TRUE</field>
+                                                                              </shadow>
+                                                                              <block type="text_join" id="f%AY!,@4[9Wj`vcW|o*t">
+                                                                                <mutation items="2"></mutation>
+                                                                                <value name="ADD0">
+                                                                                  <block type="text" id="r=OX@E3nry#gbZbbt;t.">
+                                                                                    <field name="TEXT">Schiebe meine Musik in </field>
+                                                                                  </block>
+                                                                                </value>
+                                                                                <value name="ADD1">
+                                                                                  <block type="variables_get" id="*l-?y]w!)S+u_N],5`R)">
+                                                                                    <field name="VAR" id="RJ]t:[?Hl@FEC_gZvN=U">ZuRaum</field>
+                                                                                  </block>
+                                                                                </value>
+                                                                              </block>
+                                                                            </value>
+                                                                            <value name="DELAY_MS">
+                                                                              <shadow type="math_number" id="/dD6E(Ph?8b55Ur]_k=Z">
+                                                                                <field name="NUM">0</field>
+                                                                              </shadow>
+                                                                            </value>
+                                                                            <next>
+                                                                              <block type="comment" id="K%[%Y(7-5$PX9x4bA0hS">
+                                                                                <field name="COMMENT">Die Schleife beenden da sie durch den Befehl gerade ungültig geworden ist</field>
+                                                                                <next>
+                                                                                  <block type="controls_flow_statements" id="K){!$%[)c6-5zVH69E!1">
+                                                                                    <field name="FLOW">BREAK</field>
+                                                                                  </block>
+                                                                                </next>
+                                                                              </block>
+                                                                            </next>
+                                                                          </block>
+                                                                        </next>
+                                                                      </block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
